@@ -1,0 +1,25 @@
+Guided Capstone Project Report
+
+Context:
+The purpose of this analysis is to understand whether Big Mountain Resort is maximizing its returns. Big Montana also does not have a strong sense of what facilities matter most to visitors, particularly which ones they're most likely to pay more for. This project aims to build a predictive model for ticket price based on a number of facilities each resort operates. This model will be used to provide guidance for Big Mountain's pricing and future facility investment plans.
+
+Exploratory Data Analysis:
+After cleaning our dataset, we investigated resort trends across states, specifically with respect to how their ticket price varies in relation to what facilities they offer. Using Principal Component Analysis, we looked at linear combinations of the original features that are uncorrelated with one another and order them by the amount of variance they explain. We found that the first 2 components account for over 75% of the variance. We then examined average ticket prices, however there was no discernible pattern connecting ticket price with variance. Since there’s no clear grouping of states, we chose to analyze all 50 states in our model, as opposed to segmenting them further.
+
+To further examine the relationship of each resort relative to others in the market, we engineered additional features to scale our dataset. We then created a heat map of our features to visualize correlated elements. We found some reasonable correlations, including fastQuads stands, Runs, and Snow Making_ac being closely tied to price. Of the new features, resort_night_skiing_state_ratio seems the most correlated with ticket price. If this is true, then perhaps seizing a greater share of night skiing capacity is positive for the price a resort can charge. As well as Runs, total_chairs is quite well correlated with ticket price. This is plausible; the more runs you have, the more chairs you'd need to ferry people to them! People seem to put more value in guaranteed snow cover rather than more variable terrain area. 
+
+
+Pre-Processing & Modeling:
+Using the mean ticket price as a baseline, we trained a model to predict how changing features would impact ticket price. We found Big Mountain’s modeled price to be $95.87, compared to the mean price of $81, indicating there is room for an increase even with the expected mean absolute error of $10.39. We then examined 4 scenarios to identify opportunities to reduce costs:
+
+Scenario 1: Close up to 10 of the least used runs. The number of runs is the only parameter varying. The model says closing one run makes no difference. Closing 2 and 3 successively reduces support for ticket price and so revenue. If Big Mountain closes down 3 runs, it seems they may as well close down 4 or 5 as there's no further loss in ticket price. Increasing the closures down to 6 or more leads to a large drop.
+
+Scenario 2: Big Mountain is adding a run, increasing the vertical drop by 150 feet, and installing an additional chair lift. This scenario increases support for ticket price by 1.99, could be expected to amount to 3474638
+
+Scenario 3: Repeat the previous one but adding 2 acres of snow making. This scenario increases support for ticket price by 1.99, could be expected to amount to 3474638
+
+Scenario 4: Increasing the longest run by .2 miles and guaranteeing its snow coverage by adding 4 acres of snow making capability. We found increasing the longest run had no impact on price
+
+
+Assumptions & Future Work:
+In determining whether and how much Big Mountain can raise their prices, we have to account for that the validity of our model lies in the assumption that other resorts accurately set their prices according to what the market supports. If other resorts are mispricing themselves, we would be inheriting misplaces assumptions in what people are willing to pay. Knowing operating costs of other resorts would help inform as us to ticket prices are proportionately set.
